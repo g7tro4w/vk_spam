@@ -5,28 +5,33 @@ def showMainPanel():
     mainPanel = Tk()
     mainPanel.title(u'Работа с группами')
     mainPanel.geometry('720x400+40+80')
+
+    def searchGroups():
+            session = vk.Session(access_token='d8773f36b3431af6c4fb32f3c84bf1d3c2e0883ed6acc94bc150b47ede94ecb521064a98732900074de0d')
+            api = vk.API(session)
+            groups = api.groups.search(q = group.get())
+            group_list.delete(0,END)
+            group_count.config(text = 'Найдено ' + str(groups.pop(0)) + ' групп')
+            for i in groups:
+                group_list.insert(END,i['name'])
     
     group_label = Label(mainPanel,text='Название группы', width=30)
     group = Entry(mainPanel, bd=2, text = 'Music')
-    search = Button(mainPanel, text='Поиск', command = searchGroups(group.get()))
-    group_list=Listbox(mainPanel,height=10,width=50,selectmode=SINGLE)
+    group_count = Label(mainPanel,text='', width=30)
+    group_list = Listbox(mainPanel,height=10,width=100,selectmode=SINGLE)
+    search = Button(mainPanel, text='Поиск', command = searchGroups)
     
     group_label.pack()
     group.pack()
     search.pack()
+    group_count.pack()
     group_list.pack()
     
     mainPanel.mainloop()
     
     auth_window.destroy()
 
-def searchGroups(query = 'Music'):
-        print(query)
-        session = vk.Session(access_token='d8773f36b3431af6c4fb32f3c84bf1d3c2e0883ed6acc94bc150b47ede94ecb521064a98732900074de0d')
-        api = vk.API(session)
-        groups = api.groups.search(q = query)
-        for i in groups:
-            group_list.insert(END,i)
+    
             
 
 
