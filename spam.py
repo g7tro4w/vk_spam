@@ -7,7 +7,7 @@ def showMainPanel():
     mainPanel.geometry('400x300+40+80')
 
     def searchGroups():
-            session = vk.Session(access_token='d8773f36b3431af6c4fb32f3c84bf1d3c2e0883ed6acc94bc150b47ede94ecb521064a98732900074de0d')
+            session = vk.Session(access_token='') #ВОТ ТУТ ДОЛЖЕН БЫТЬ ТОКЕН
             api = vk.API(session)
             groups = api.groups.search(q = group.get(), count = 1000)
             group_list.delete(0,END)
