@@ -9,7 +9,7 @@ def showMainPanel():
     def searchGroups():
             session = vk.Session(access_token='d8773f36b3431af6c4fb32f3c84bf1d3c2e0883ed6acc94bc150b47ede94ecb521064a98732900074de0d')
             api = vk.API(session)
-            groups = api.groups.search(q = group.get())
+            groups = api.groups.search(q = group.get()) //Удаляем первый элемент, в котором содержится количество найденных групп
             group_list.delete(0,END)
             group_count.config(text = 'Найдено ' + str(groups.pop(0)) + ' групп')
             for i in groups:
