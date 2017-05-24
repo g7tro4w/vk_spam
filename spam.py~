@@ -1,5 +1,6 @@
 #! /usr/bin/env python3
 from tkinter import *
+import vk
 import vk_auth
 
 def showMainPanel():
@@ -9,7 +10,6 @@ def showMainPanel():
     client_id = '5732579'
     scope = 'wall'
     token, user_id = vk_auth.auth(login.get(), password.get(), client_id, scope)
-    print (token)
     def searchGroups():
             session = vk.Session(access_token=token) #ВОТ ТУТ ДОЛЖЕН БЫТЬ ТОКЕН
             api = vk.API(session)
