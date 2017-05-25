@@ -4,7 +4,7 @@ import vk_auth
 client_id = '5732579'
 scope = 'wall'
 
-token, user_id = vk_auth.auth('79152986805', 'andranik111291a', client_id, scope)
+token, user_id = vk_auth.auth('', '', client_id, scope)
 session = vk.Session(access_token=token) #ВОТ ТУТ ДОЛЖЕН БЫТЬ ТОКЕН
 api = vk.API(session)
 OWNER_ID = '53320096'
